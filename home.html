@@ -38,19 +38,40 @@
     Where do you want to go
   </button>
 
+  <!-- Main modal body -->
   <div id="routes" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="LargeModalLabel" aria-hidden="true">
     <div class="modal-dialog modal-lg">
       <div class="modal-content">
         <div class="modal-header">
           <h4 class="modal-title" id="myLargeModalLabel">Routes</h4>
-          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <button type="button" id="close-modal-btn" class="close" data-dismiss="modal" aria-label="Close">
             <span aria-hidden="true">×</span>
           </button>
         </div>
-        <div class="modal-body" style="padding:0"></div>
+        <div id="main-modal-body" class="modal-body main-modal-body" style="padding:0">
+          <!-- Here all main locations will be appended using main_locations_array -->
+        </div>
       </div>
     </div>
   </div>
+
+
+  <!-- Next modal body -->
+  <div id="next-routes" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="LargeModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h4 class="modal-title" id="myLargeNextModalLabel"></h4>
+          <button type="button" id="close-next-modal-btn" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">×</span>
+          </button>
+        </div>
+        <div id="next-modal-body" class="modal-body next-modal-body" style="padding:0"></div>
+      </div>
+    </div>
+  </div>
+
+
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.4.1/js/bootstrap.min.js"></script>
   <script src="./ar.js"></script>
@@ -95,51 +116,22 @@
     //   }
     // ];
 
-    var navbutton = [
+
+    // Data for all the locations
+    var main_locations_array = [
+        { ind: 0, name: "Hostels"},
+        { ind: 1, name: "Famous Spots"},
+        { ind: 2, name: "Lecture Theatres"},
+        { ind: 3, name: "Grounds"},
+        { ind: 4, name: "Offices"},
+        { ind: 5, name: "Main Gates"},
+      ]
+
+    var hostels_navbutton = [
       {
         name: "Vishwakarma Hostel",
         lat: 25.257578,
         long: 82.985853
-      },
-      {
-        name: "Swatantrata Bhavan",
-        lat: 25.260576,
-        long: 82.993757
-      },
-      {
-        name: "ADV Grounds",
-        lat: 25.259153,
-        long: 82.989267
-      },
-      {
-        name: "LC",
-        lat: 25.260911,
-        long: 82.986833
-      },
-      {
-        name: "CCD",
-        lat: 25.258057,
-        long: 82.98686
-      },
-      {
-        name: "G1-G11",
-        lat: 25.262131,
-        long: 82.992954
-      },
-      {
-        name: "LT3",
-        lat: 25.260209,
-        long: 82.99055
-      },
-      {
-        name: "Technex Office",
-        lat: 25.261372,
-        long: 82.986774
-      },
-      {
-        name: "Hyderabad Gate",
-        lat: 25.262909,
-        long: 82.982231
       },
       {
         name: "Visvesvaraya Hostel",
@@ -152,21 +144,6 @@
         long: 82.984399
       },
       {
-        name: "ABLT",
-        lat: 25.263182,
-        long: 82.988691
-      },
-      {
-        name: "Vishwanath Temple",
-        lat: 25.26568,
-        long: 82.989624
-      },
-      {
-        name: "Library",
-        lat: 25.261804,
-        long: 82.989914
-      },
-      {
         name: "Girls Hostel",
         lat: 25.261037,
         long: 82.98345
@@ -175,13 +152,85 @@
         name: "SC Dey",
         lat: 25.260237,
         long: 82.987016
+      }
+    ]
+
+    var famousspots_navbutton = [
+      {
+        name: "LC",
+        lat: 25.260911,
+        long: 82.986833
+      },
+      {
+        name: "CCD",
+        lat: 25.258057,
+        long: 82.98686
+      },
+      {
+        name: "Vishwanath Temple",
+        lat: 25.26568,
+        long: 82.989624
+      },
+      {
+        name: "Swatantrata Bhavan",
+        lat: 25.260576,
+        long: 82.993757
       },
       {
         name: "Guest House",
         lat: 25.26014,
         long: 82.9848
-      }
-    ];
+      },
+      {
+        name: "Library",
+        lat: 25.261804,
+        long: 82.989914
+      },
+    ]
+
+    var lecturetheatres_navbutton = [
+      {
+        name: "G1-G11",
+        lat: 25.262131,
+        long: 82.992954
+      },
+      {
+        name: "LT3",
+        lat: 25.260209,
+        long: 82.99055
+      },
+      {
+        name: "ABLT",
+        lat: 25.263182,
+        long: 82.988691
+      },
+    ]
+
+    var grounds_navbutton = [
+      {
+        name: "ADV Ground",
+        lat: 25.259153,
+        long: 82.989267
+      },
+    ]
+
+    var offices_navbutton = [
+      {
+        name: "Technex Office",
+        lat: 25.261372,
+        long: 82.986774
+      },
+    ]
+    
+    var maingates_navbutton = [
+      {
+        name: "Hyderabad Gate",
+        lat: 25.262909,
+        long: 82.982231
+      },
+    ]
+
+    var navbutton_array = [hostels_navbutton, famousspots_navbutton, lecturetheatres_navbutton, grounds_navbutton, offices_navbutton, maingates_navbutton]
 
 
     $(window).on("load", () => {
@@ -189,16 +238,50 @@
 
       // render the model  
 
-      navbutton.forEach(button => {
-        $(".modal-body").append(`<button
-                lat="${button.lat}"
-                long="${button.long}"
-                type="button"
-                class="list-group-item list-group-item-action"
-              >
-                ${button.name}
-              </button>`);
+      main_locations_array.forEach(button => {
+        $(".main-modal-body").append(
+          `<button type="button" id="${button.ind}"  data-toggle="modal" data-target="#next-routes" class="modal-loc-type-btn list-group-item list-group-item-action">
+            ${button.name}
+          </button>`
+        );
       });
+
+
+      $(`.modal-loc-type-btn`).click(function(e) {
+        // Getting the data of which option(button) is clicked in the main modal
+        var btn_index = e.target.id;
+        var btn_name = e.target.innerText;
+
+        // Closing the main modal
+        $('#routes').modal("hide");
+
+        // Removing the already existing content inside the title and body of the next modal respectively
+        let modal_title_removing = document.getElementById("myLargeNextModalLabel");
+        modal_title_removing.textContent = "";
+
+        let modal_body_removing = document.getElementById("next-modal-body");
+        modal_body_removing.textContent = "";
+
+        // Displaying 'btn_name' as title on the next-modal
+        $("#myLargeNextModalLabel").append(btn_name)
+
+        var next_modal_navbutton = navbutton_array[btn_index]
+
+        // Displaying all the choices in the body of the next-modal
+        next_modal_navbutton.forEach(button => {
+
+              console.log('chutiye!')
+
+              $(".next-modal-body").append(`<button
+                      lat="${button.lat}"
+                      long="${button.long}"
+                      type="button"
+                      class="list-group-item list-group-item-action"
+                    >
+                      ${button.name}
+                    </button>`);
+            });
+      })
 
 
       // will be called when destination is selected 
@@ -206,6 +289,7 @@
       // .. display markers at all those locations 
 
       function drawpath(end) {
+        console.log("drawpath k andar :", end)
 
         const scene = document.querySelector("a-scene");
         
@@ -249,8 +333,10 @@
       
       // define the click event 
 
-      $(".modal-body button").click(e => {
-        $("#routes").modal("hide");
+      $(".next-modal-body").click(e => {
+        console.log('next modal ke button ko click kar diya')
+        console.log("event :", e.target)
+        $("#next-routes").modal("hide");
         $("a-image").remove();
           // console.log($(e.target).attr("lat"));
 
