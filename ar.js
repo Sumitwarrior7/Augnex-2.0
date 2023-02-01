@@ -1,3 +1,4 @@
+ar.js
 var centre = new L.LatLng(25.260644, 82.986878);
 var map = null;
 
@@ -379,7 +380,7 @@ window.onload = () => {
               if (!object.render) {
                 const icon = document.createElement("a-entity");
                 icon.setAttribute(
-                  "gps-entity-place",
+                  "gps-new-entity-place",
                   `latitude: ${object.center.lat}; longitude: ${object.center.long};`
                 );
                 icon.setAttribute("name", object.name);
