@@ -1,6 +1,5 @@
 <!DOCTYPE html>
 <html>
-
 <head>
   <meta http-equiv="Cache-control" content="public" />
   <meta charset="utf-8" />
@@ -8,9 +7,9 @@
   <title>Navigation</title>
   <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.3/dist/leaflet.css" integrity="sha256-kLaT2GOSpHechhsozzB+flnD+zUyjE2LlfWPgU04xyI=" crossorigin="" />
 <script src="https://unpkg.com/leaflet@1.9.3/dist/leaflet.js" integrity="sha256-WBkoXOwTeyKclOHuWtc+i2uENFpDZ9YPdf5Hf+D7ewM=" crossorigin=""></script>
-  <script src="https://aframe.io/releases/0.9.2/aframe.min.js"></script>
+  <script src="https://aframe.io/releases/1.4.1/aframe.min.js"></script>
   <script src="https://raw.githack.com/jeromeetienne/AR.js/master/aframe/build/aframe-ar.min.js"></script>
-  <script src="https://unpkg.com/aframe-look-at-component@0.8.0/dist/aframe-look-at-component.min.js"></script>
+  <script src="https://unpkg.com/browse/aframe-look-at-component@1.0.0/dist/aframe-look-at-component.min.js"></script>
   <script>
     THREEx.ArToolkitContext.baseURL =
       "https://raw.githack.com/jeromeetienne/ar.js/master/three.js/";
@@ -21,11 +20,11 @@
 </head>
 
 <body style="margin: 0; overflow: hidden; ">
-  <a-scene cursor="rayOrigin: mouse; fuse: true; fuseTimeout: 0;" raycaster="objects: [gps-entity-place];"
+  <a-scene cursor="rayOrigin: mouse; fuse: true; fuseTimeout: 0;" raycaster="objects: [gps-new-entity-place];"
     vr-mode-ui="enabled: false" embedded
     arjs="sourceType: webcam; sourceWidth:1280; sourceHeight:960; displayWidth: 1280; displayHeight: 960; debugUIEnabled: false;">
     <!--will be "gps-new-camera" in update version   -->
-    <a-camera gps-camera='minDistance: 5' rotation-reader> </a-camera>
+    <a-camera gps-new-camera='minDistance: 5' rotation-reader> </a-camera>
   </a-scene>
   <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#routes" style="    position: fixed;
     bottom: 0;
@@ -72,7 +71,7 @@
   </div>
 
 
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.4.1/js/bootstrap.min.js"></script>
   <script src="./ar.js"></script>
   <script>
@@ -305,13 +304,13 @@
                 const longitude = place[0];
                 const icon = document.createElement("a-image");
                 icon.setAttribute(
-                  "gps-entity-place",                                 // will be gps-new-entity-place in latest versoion 
+                  "gps-new-entity-place",                                 // will be gps-new-entity-place in latest versoion 
                   `latitude: ${latitude + + 0.001};
                    longitude: ${longitude};`
                 );
                 // icon.setAttribute("name", place.properties.name);
                 icon.setAttribute("src", "./map-marker.png");
-                icon.setAttribute("look-at", "[gps-camera]");
+                icon.setAttribute("look-at", "[gps-new-camera]");
                 icon.setAttribute("scale", "5,5,5");
                 // console.log(icon);
                 icon.addEventListener('loaded', () => {
