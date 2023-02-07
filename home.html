@@ -10,6 +10,8 @@
   <script src="https://aframe.io/releases/1.4.1/aframe.min.js"></script>
   <script src="https://raw.githack.com/jeromeetienne/AR.js/master/aframe/build/aframe-ar.min.js"></script>
   <script src="https://unpkg.com/browse/aframe-look-at-component@1.0.0/dist/aframe-look-at-component.min.js"></script>
+  <!-- For using multiple images on same a-box element, you have to include the script below -->
+  <script src="https://cdn.rawgit.com/elbobo/aframe-multisrc-component/b6d23310/dist/0.3/aframe-multisrc-component.js"></script>
   <script>
     THREEx.ArToolkitContext.baseURL =
       "https://raw.githack.com/jeromeetienne/ar.js/master/three.js/";
@@ -23,6 +25,74 @@
   <a-scene cursor="rayOrigin: mouse; fuse: true; fuseTimeout: 0;" raycaster="objects: [gps-new-entity-place];"
     vr-mode-ui="enabled: false" embedded
     arjs="sourceType: webcam; sourceWidth:1280; sourceHeight:960; displayWidth: 1280; displayHeight: 960; debugUIEnabled: false;">
+    
+    <!-- Asset Management System -->
+    <a-assets>
+        <img id="right" src="images/aquila.jpeg">
+        <img id="left" src="images/digi_well.jpeg">
+        <img id="top" src="images/exo_skeleton.jpg">
+        <img id="bottom" src="images/malar_ai.jpeg">
+        <img id="front" src="images/safe_her.jpeg">
+        <img id="back" src="images/smart_dustbin.jpeg">
+    </a-assets>
+
+    <!-- Rendering Rotating cubes :- -->
+    <!-- LC -->
+    <a-box position="0 0 0" height="1" depth="1" width="1" multisrc="srcs:#right,#left,#top,#bottom,#front,#back" gps-new-entity-place="latitude: 25.260911; longitude: 82.986833">
+        <a-animation attribute="rotation"
+        to="0 360 0"
+        repeat="indefinite"
+        dur="2000"
+        easing="linear">
+        </a-animation> I
+    </a-box>
+    <!-- CCD -->
+    <a-box position="0 0 0" height="1" depth="1" width="1" multisrc="srcs:#right,#left,#top,#bottom,#front,#back" gps-new-entity-place="latitude: 25.258057; longitude: 82.98686">
+        <a-animation attribute="rotation"
+        to="0 360 0"
+        repeat="indefinite"
+        dur="2000"
+        easing="linear">
+        </a-animation> I
+    </a-box>
+    <!-- VT -->
+    <a-box position="0 0 0" height="1" depth="1" width="1" multisrc="srcs:#right,#left,#top,#bottom,#front,#back" gps-new-entity-place="latitude: 25.26568; longitude: 82.989624">
+        <a-animation attribute="rotation"
+        to="0 360 0"
+        repeat="indefinite"
+        dur="2000"
+        easing="linear">
+        </a-animation> I
+    </a-box>
+    <!-- Swatantra bhawan -->
+    <a-box position="0 0 0" height="1" depth="1" width="1" multisrc="srcs:#right,#left,#top,#bottom,#front,#back" gps-new-entity-place="latitude: 25.260576; longitude: 82.993757">
+        <a-animation attribute="rotation"
+        to="0 360 0"
+        repeat="indefinite"
+        dur="2000"
+        easing="linear">
+        </a-animation> I
+    </a-box>
+    <!-- Guest house -->
+    <a-box position="0 0 0" height="1" depth="1" width="1" multisrc="srcs:#right,#left,#top,#bottom,#front,#back" gps-new-entity-place="latitude: 25.26014; longitude: 82.9848">
+        <a-animation attribute="rotation"
+        to="0 360 0"
+        repeat="indefinite"
+        dur="2000"
+        easing="linear">
+        </a-animation> I
+    </a-box>
+    <!-- DG corner -->
+    <a-box position="0 0 0" height="1" depth="1" width="1" multisrc="srcs:#right,#left,#top,#bottom,#front,#back" gps-new-entity-place="latitude: 25.263211; longitude: 82.986463">
+        <a-animation attribute="rotation"
+        to="0 360 0"
+        repeat="indefinite"
+        dur="2000"
+        easing="linear">
+        </a-animation> I
+    </a-box>    
+
+    
     <!--will be "gps-new-camera" in update version   -->
     <a-camera gps-new-camera='minDistance: 5' rotation-reader> </a-camera>
   </a-scene>
